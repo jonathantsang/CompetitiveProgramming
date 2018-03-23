@@ -4,7 +4,7 @@ public:
         int s = nums[0];
         int imax = s;
         int imin = s;
-        for(int i = 0; i < nums.size(); i++){
+        for(int i = 1; i < nums.size(); i++){
             
             if(nums[i] < 0){
                 swap(imax, imin);

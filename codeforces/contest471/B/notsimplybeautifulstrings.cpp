@@ -27,9 +27,10 @@ int main(){
 			odd++;
 		}
 	}
+	// cout << "got even " << even << " got odd " << odd << endl; 
 	if((even == 2 && odd == 1) || (even == 2 && odd == 2) || (even == 1 && odd == 1) || (odd == 2 && even == 1)
 		|| (even == 2 && odd == 0) || (even == 0 && odd == 2) || (even == 4 && odd == 0) || (even == 3 && odd == 1) ||
-		(even == 1 && odd == 3) || (even == 0 && odd == 4) || (even == 0 && odd == 3)){
+		(even == 1 && odd == 3) || (even == 0 && odd == 4) || (even == 0 && odd == 3) || (even == 3 && odd == 0)){
 		if(even == 1 && odd == 1){
 			// Check the 2 leng even and 1 leng odd case
 			int odd_count = 0;

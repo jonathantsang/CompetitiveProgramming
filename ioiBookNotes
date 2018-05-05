@@ -1,0 +1,275 @@
+## 1 Basics
+
+``` C++
+#include <bits/stdc++.h> 
+int main(){
+	
+}
+```
+### Put at the beginning of code:  
+ios::sync_with_stdio(0);
+cin.tie(0);
+
+### Read in file
+freopen("input.txt", "r", stdin);
+freopen("output.txt", "w", stdout);
+
+## 1.3 Working with numbers
+Int: −2^31...2^31−1
+
+### Floating point numbers
+printf("%.9f\n", x);
+9 digit precision
+
+May have imprecision in floats so use a machine episilon
+if (abs(a-b) < 1e-9) {
+    // a and b are equal
+}
+
+## 1.4 Shortening Code
+
+### Type names
+typedef long long ll;
+
+### Macros
+#define f first
+or
+#define REP(i,a,b) for (int i = a; i <= b; i++)
+Rep(i, 1, n){
+	search(i);
+}
+
+sometimes macros can cause bugs
+
+## 1.5 Mathematics
+
+### Sums
+Sum of 1 to n for x is n(n+1)/2
+Sum of 1 to n for x^2 is n(n+1)(2n+1)/6
+
+Arithmetic progression: A sequence of numbers where the difference between any two consecutive numbers is a constant. eg. 3,7,11,15
+
+a + ... + b = n(a+b)/2
+
+Geometric progression: A sequence of numbers where the the ratio between any two consecutive numbers is a constant. eg. 3,6,12,24
+
+a + ak + ak^2 + ak^3... + b = (bk - a) / (b-1)
+
+Special geometric is:
+1+2+4+8...2^(n-1) = 2^n -1
+
+Harmonic Sum:
+
+Sum of 1 to n for 1/x upper bound is log_2(n) + 1
+
+### Set Theory
+Collection of elements
+
+Intersection: contained in both sets (A ^ B)
+Union: Elements in A, B or Both (A V B)
+Complement: Elements not in the set (Ahat)
+Difference: Elements in A that are not in B (A \ B)
+Subset: Every element of A is in S. There are always 2^(|S|) subsets (A c S)
+
+### Logic
+True(1) or False(0)
+- Negation, ^ Conjunction, V Disjunction, -> Implication, <-> Equivalence
+
+### Functions
+Ceiling, Floor, Max, Min, Fibonacci Numbers
+
+### Logarithms
+log_k(ab) = log_k(a) + log_k(b)
+log_k(x^n) = n * log_k(x)
+log_k(a/b) = log_k(a) - log_k(b)
+log_u(x) = log_k(x) / log_k(u)
+
+## 1.6 Contests and Resources
+IOI-secondary students
+ICP-university students
+Online Contests
+Books
+
+## 2 Time Complexity
+Loops based on times run, nested are O(n^k)
+
+### 2.2 Complexity Classes
+Polynomial at most O(n^k)
+
+### 2.3 Estimate Efficiency
+input size - required time complexity
+n <= 10 - O(n!)
+n <= 20 - O(2^n)
+n <= 500 - O(n^3)
+n <= 5000 - O(n^2)
+n <= 10^6 - O(n) or O(nlogn)
+n is large - O(1) or O(logn)
+
+### 2.4 Maximum subarray sum
+Algorithm 1 brute force O(n^3)
+Algorithm 2 check each ending O(n^2)
+Algorithm 3 save value or use current O(n)
+
+## 3 Sorting
+Bubble Sort O(n^2)
+Merge Sort O(nlogn)
+Bookeeping Sort
+
+### 3.2 Sorting in C++
+```
+vector<int> v = {4,2,5,3,5,8,3};
+sort(v.begin(),v.end());
+// reverse
+sort(v.rbegin(),v.rend());
+```
+pairs sorted by first element first then second element
+
+#### user defined structs
+struct P {
+	int x,y;
+	bool operator<(const P &p){
+		if(x != p.x) return x < p.x;
+		else return y < p.y;
+	}
+}
+external comparison function
+bool comp(string a, string b){
+	if (a.size() != b.size()) return a.size() < b.size();
+    return a < b;
+}
+
+sort(v.begin(), v.end(), comp);
+
+### 3.3 Binary Search
+O(n) unsorted find
+O(logn) if it is sorted
+
+### C++ Functions
+lower_bound - first array element at least x
+upper_bound - first array element larger than x
+equal_range - returns both above pointers
+
+auto k = lower_bound(array,array+n,x)-array;
+if (k < n && array[k] == x) {
+    // x found at index k
+}
+
+## 4 Data Structures
+Dynamic Arrays
+vector<int> v;
+for (int i = 0; i < v.size(); i++) {
+    cout << v[i] << "\n";
+}
+for (auto x : v) {
+    cout << x << "\n";
+}
+// size 10, initial value 5
+vector<int> v(10, 5);
+
+### 4.2 Set Structure
+distinct elements
+balanced binary tree, operations in O(logn)
+unordered_set is more efficient, uses hashing O(1)
+set<int> s;
+s.insert(3);
+s.insert(2);
+
+multiset<int> s; // allows more than one of an element
+
+### 4.3 Map Structure
+map<string, int> m;
+balanced binary tree, operations in O(logn)
+unordered_map is more efficient, uses hashing O(1)
+
+find element
+m.count("aybabtu");
+
+elements in the map
+for(auto x : m){
+	cout << x.first << " " << x.second << endl;
+}
+
+### 4.4 Iterators and Ranges
+points to an element in a data structure
+auto it = s.begin();
+cout << *it << "\n";
+
+// move forwards and backwards
+for (auto it = s.begin(); it != s.end(); it++) {
+   	cout << *it << "\n";
+}
+
+### 4.3 Other Structures
+
+## Bitset
+array whose values are either 0 or 1
+
+## Deque
+deque<int> d;
+d.push_back(5); // [5]
+d.push_back(2); // [5,2]
+d.push_front(3); // [3,5,2]
+d.pop_back(); // [3,5]
+d.pop_front(); // [5]
+
+## Stack
+stack<int> s;
+s.push(3);
+s.push(2);
+s.push(5);
+cout << s.top(); // 5
+s.pop();
+cout << s.top(); // 2
+
+## Queue
+queue<int> q;
+q.push(3);
+q.push(2);
+q.push(5);
+cout << q.front(); // 3
+q.pop();
+cout << q.front(); // 2
+
+priority_queue<int> q;
+q.push(3);
+q.push(5);
+q.push(7);
+q.push(2);
+cout << q.top() << "\n"; // 7
+q.pop();
+cout << q.top() << "\n"; // 5
+q.pop();
+q.push(6);
+cout << q.top() << "\n"; // 6
+q.pop();
+
+### 4.6 Comparison to Sorting
+Checking elements in A are in B
+Algo 1: Brute force O(n^2)
+Algo 2: Use an unordered map O(nlogn)
+Algo 3: Sort O(nlogn), but faster since sort is done once at the beginning
+
+## 5 Complete Search
+Subsets
+Method 1, recursion
+Method 2, binary representation of numbers to form subsets
+
+### 5.2 Generating Permutations
+
+### 5.3 Backtracking
+A backtracking algorithm begins with an empty solution and extends the solution step by step.
+
+### 5.5 Meet in the Middle
+Technique where the search space is divided into two parts of about equal size.
+
+## 6 Greedy Algorithms
+A solution to the problem by always making a choice that looks the best at the moment.
+
+{1, 2, 5, 10, 20, 50, 100, 200}
+Coin problem for Euro works in this case. (not always)
+
+### 6.2 Scheduling
+
+### 6.3 Tasks and Deadlines
+
+### 6.4 Minimizing Sums

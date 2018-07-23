@@ -1,0 +1,29 @@
+Notes:
+
+Sorting Algorithms:
+
+Bubble Sort:
+O(n^2) average and worst case. O(1) memory.
+A the beginning swap two elements if the first is greater than the second. Go to each pair.
+
+Selection Sort:
+O(n^2) average and worst case. O(1) memory.
+Find the smallest element using a linear scan and move it to the front (swap with front element). Then continue until it is all done.
+
+Merge Sort
+O(nlog(n)) average and worst case. O(n) memory.
+Divide the array in half, sort the halves, and then merge. Each of the halves has merge sort run on it.
+
+Quick Sort
+O(nlog(n)) average, O(n^2) worst case. O(nlog(n)) memory.
+Random element and partition the array where the partition comes before all elements greater than it.
+
+Radix Sort:
+O(kn), k is the number of passes of the sorting algorithm
+
+Searching Algorithms:
+
+Binary Search:
+Search in a sorted array. Compute the midpoint and choose left or right.
+
+Data Structures:

@@ -1,0 +1,24 @@
+Programming Challenges
+
+
+## Intro
+- write the comments first
+- document each variable
+- use symbolic constants
+- use enumerated types for a reason
+- use subroutines to avoid redundant code
+- make debugging statements meaningful
+
+## 1.4 Elementary Data Types
+Arrays
+Sentinel check bounds
+
+Multidimensional arrays
+
+records
+structure for heterogeneous data records
+struct point {
+	int x,y ;
+};
+
+## 1.6 Problems

@@ -273,4 +273,184 @@ Coin problem for Euro works in this case. (not always)
 ### 6.3 Tasks and Deadlines
 
 ### 6.4 Minimizing Sums
+brute force, random
+want the median
+other sum
+want the average
+
+### 6.4 Data Compression
+compress the letters
+constant-length they all have the same length
+variable-length they are different
+
+Huffman Encoding
+greedy algorithm
+binary string based on frequencies
+
+## Chapter 7 Dynamic Programming
+overlapping subproblem
+- Finding an optimal solution: We want to find a solution that is as large as possible or as small as possible.
+- Counting the number of solutions: We want to calculate the total num- ber of possible solutions.
+
+memoization
+
+Recursive formulation
+iterative method 0 to n
+
+Count number of solutions
+same recursive breakdown of sums.
+
+### 7.2 Longest Increasing Subsequence
+Look back at the longest sequence up to an index, and try to look back to add on to a previous sequence if the value is lower.
+
+### 7.3 Paths in a grid
+Find the maximum grid going down and right.
+Look at the one above and to the left, and form the max to that point using dp.
+
+### 7.4 Knapsack problem
+Given a list of weights, find the sums that can be created.
+Using first k weights. Based on if we can get it with k-1 weights, or x-w_k with k - 1 weights. At each point you see if including or excluding the kth weight will get to the value we want.
+
+possible[0][0] = true;
+for (int k = 1; k <= n; k++) {
+    for (int x = 0; x <= W; x++) {
+       if (x-w[k] >= 0) possible[x][k] |= possible[x-w[k]][k-1];
+       possible[x][k] |= possible[x][k-1];
+	} 
+}
+
+### 7.5 Edit Distance
+Change the string by removing, adding, or replace
+
+distance(a, b) = min(distance(a, b - 1) + 1, distance(a - 1, b) + 1,
+distance(a - 1, b - 1) + cost(a, b))
+
+### 7.6 Counting Tiling
+
+Let count(k,x) denote the number of ways to construct a solution for rows 1...k of the grid such that string x corresponds to row k. It is possible to use dynamic programming here, because the state of a row is constrained only by the state of the previous row.
+
+## Chapter 8 Amortized Analysis
+
+### 8.1 Two pointers method
+
+Subarray sum
+Subarray equals to a sum
+
+### 2SUM Problem
+sort, then two pointers
+
+3SUM, sort then perform 2SUM on each index of a shortened array
+
+### 8.2 Nearest smaller elements
+
+keep a stack, and push on the elements as it grows, but pop off when the numbers are larger on the stack until the last number is smaller than the value.
+
+### 8.3 Sliding Window
+
+A sliding window is a constant-size subarray that moves from left to right through the array. At each window position, we want to calculate some infor- mation about the elements inside the window. In this section, we focus on the problem of maintaining the sliding window minimum, which means that we should report the smallest value inside each window.
+
+## Chapter 9 Range Queries
+
+sum(a,b) sum from a to b
+min(a,b) min from a to b
+max(a,b) max from a to b
+
+### 9.1 Static Array Queries
+
+### Sum Queries
+sums from 0 to k
+Then form sum(a,b) from sum(0,b) - sum(0,a-1)
+can be changed to get two-dimensional data, such as from the top left corner to form any rectangle
+
+### Minimum Queries
+calculate min(a,b) where b-a+1 is a power of 2
+recursive formula
+minq(a,b)=min(minq(a,a+w-1),minq(a+w,b))
+
+### 9.2 Binary Indexed Tree
+O(logn) operations on an array
+processing a range sum query and updating a value
+better than rebuilding the sum array again in O(n)
+
+Structure:
+Let p(k) denote the largest power of two that divides k. We store a binary indexed tree as an array tree such that
+tree[k]=sumq(k-p(k)+1,k),
+k(6) = 2, since 2 is the largest power of 2 to go into 6
+
+Implementation
+p(k)=k & -k
+
+sum(1,k);
+int sum(int k) {
+    int s = 0;
+    while (k >= 1) {
+       s += tree[k];
+	   k -= k&-k; 
+	}
+	return s; 
+}
+
+add(1,k);
+void add(int k, int x) {
+    while (k <= n) {
+		tree[k] += x;
+		k += k&-k; 
+	}
+}
+
+### 9.3 Segment Tree
+- more memory and more complicated than bit, but has all queries
+- bt with bottom as an array
+- get the top two nodes for the sum
+- changing value goes up the tree
+
+Implementation
+array of 2n elements
+the parent of tree[k] is tree[floor(k/2)], and its children are tree[2k] and tree[2k + 1]
+
+int sum(int a, int b) {
+    a += n; b += n;
+    int s = 0;
+    while (a <= b) {
+       if (a%2 == 1) s += tree[a++];
+       if (b%2 == 0) s += tree[b--];
+       a /= 2; b /= 2;
+	}
+	return s; 
+}
+
+Other Queries
+the segment tree can contain the minimum and not the sum
+
+### 9.4 Additional Techniques
+c(x) compresses the index
+
+Range Updates
+update range and retrieve single values
+difference array: values difference between consecutive values in the array
+
+## Chapter 10 Bit Manipulation
+signed: negative and positive
+unsigned: positive
+
+### Bit Operations
+AND both have the same bit
+OR least one has the bit
+XOR exactly one has the bit
+NOT bits inverted
+Bit shifts
+x << k is x multiplied by 2^k
+x >> k is x divided by 2^k
+
+### 10.3 Representing Sets
+A subset of {0, to n-1}
+can be represented as an n bit integer whose one bits indicate which elements belong to the subset
+
+Set Operations
+Intersection a ^ b
+Union a v b
+Complement ~a
+Difference a & (~b)
+
+### 10.4 Hamming Distance
 

@@ -1,4 +1,10 @@
-t = int(input())
+n = int(input())
 
-for _ in range(t):
+# int(input())
+# list(map(int, input().split()))
+
+def solve():
+	pass
+
+for _ in range(n):
 	pass

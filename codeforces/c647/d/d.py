@@ -1,49 +1,39 @@
-from collections import defaultdict
+import io
+import os
 
-rri = lambda: int(input())
-rrm = lambda: list(map(int, input().split()))
+from collections import Counter, defaultdict, deque
 
-def solve(N, m, arr, topic):
-    graph = defaultdict(set)
-    cur = {i:1 for i in range(N)}
-    for a, b in arr:
-        if topic[a-1] == topic[b-1]:
-            return -1
-        graph[a-1].add(b-1)
-        graph[b-1].add(a-1)
-    final = {}
-    bfs = []
+def solve(N, M, edges, topics):
+    g = defaultdict(list)
+    for u, v in edges:
+        g[u].append(v)
+        g[v].append(u)
+
+    assert len(topics) == N
+    vertices = sorted(range(N), key=lambda k: topics[k])
+
     seen = set()
-    for (i, n) in enumerate(topic):
-        final[i] = n
-        if n == 1:
-            bfs.append((i))
-            seen.add(i)
-    ans = []
+    for v in vertices:
+        best = -1
+        uniq = set()
+        for adj in g[v]:
+            if adj in seen:
+                best = max(best, topics[adj])
+                uniq.add(topics[adj])
+        if best + 1 != topics[v] or len(uniq) != topics[v]:
+            return -1
+        seen.add(v)
 
-    while bfs:
-        new_bfs = []
-        tmp_node = set()
-        for node in bfs:
-            for nei in graph[node]:
-                if nei in seen: continue;
-                tmp_node.add(nei)
-        for tmp_n in tmp_node:
-            cur[tmp_n] +=1
-            if cur[tmp_n] == final[tmp_n] and cur[tmp_n] == cur[node]+1:
-                new_bfs.append(tmp_n)
-                seen.add(tmp_n)
-
-        ans+=bfs
-        bfs = new_bfs
-    if len(ans)!= N or cur!= final:
-        return -1
-    return ' '.join([str(i+1) for i in ans])
+    return " ".join(str(x + 1) for x in vertices)
 
 
-n, m = rrm()
-graph = []
-for _ in range(m):
-    graph.append(rrm())
-topic = rrm()
-print(solve(n, m, graph, topic))
+if __name__ == "__main__":
+    input = io.BytesIO(os.read(0, os.fstat(0).st_size)).readline
+
+    N, M = [int(x) for x in input().split()]
+    edges = [[int(x) - 1 for x in input().split()] for i in range(M)]  # 0 indexed
+    topics = [int(x) - 1 for x in input().split()]  # 0 indexed
+    ans = solve(N, M, edges, topics)
+    print(ans)
+
+# from throwawayatcoder

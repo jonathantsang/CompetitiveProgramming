@@ -1,7 +1,7 @@
 n = int(input())
 
-# int(input())
-# list(map(int, input().split()))
+rri = lambda: int(input())
+rrm = lambda: list(map(int, input().split()))
 
 def solve():
 	pass

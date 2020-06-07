@@ -1,0 +1,20 @@
+### Codeforces Solutions
+
+Backlog of problems I need to solve on my own time:
+- https://codeforces.com/contest/1365/problem/D
+- https://codeforces.com/contest/1359/problem/A
+- https://codeforces.com/contest/1359/problem/B
+- https://codeforces.com/contest/1359/problem/C
+- https://codeforces.com/contest/1358/problem/B
+- https://codeforces.com/contest/1358/problem/C
+- https://codeforces.com/contest/1358/problem/D
+- https://codeforces.com/contest/1354/problem/A
+- https://codeforces.com/contest/1354/problem/B
+- https://codeforces.com/contest/1354/problem/C1
+- https://codeforces.com/contest/1355/problem/B
+- https://codeforces.com/contest/1355/problem/C
+- https://codeforces.com/contest/1355/problem/D
+- https://codeforces.com/contest/1355/problem/E
+
+backlog done:
+- https://codeforces.com/contest/1355/problem/A

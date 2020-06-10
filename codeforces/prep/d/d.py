@@ -7,4 +7,4 @@ def solve():
 	pass
 
 for _ in range(n):
-	pass
+	print(solve())

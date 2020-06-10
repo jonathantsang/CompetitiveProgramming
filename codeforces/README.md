@@ -16,5 +16,8 @@ Backlog of problems I need to solve on my own time:
 - https://codeforces.com/contest/1355/problem/D
 - https://codeforces.com/contest/1355/problem/E
 
+ladders:
+- https://github.com/karansinghgit/CodeForces-Ladders
+
 backlog done:
 - https://codeforces.com/contest/1355/problem/A

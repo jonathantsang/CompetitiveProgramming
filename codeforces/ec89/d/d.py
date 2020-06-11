@@ -23,3 +23,5 @@ def solve(n, arr):
 n = rri()
 arr=rrm()
 solve(n, arr)
+
+# this soln got hacked lol

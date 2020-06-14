@@ -1,5 +1,3 @@
-import math
-
 rr = lambda: input()
 rri = lambda: int(input())
 rrm = lambda: list(map(int, input().split()))
@@ -41,5 +39,3 @@ def solve(n, arr):
 n = rri()
 arr=rrm()
 solve(n, arr)
-
-# this soln got hacked lol

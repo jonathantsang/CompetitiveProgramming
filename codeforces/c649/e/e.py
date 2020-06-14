@@ -1,14 +1,13 @@
-# from collections import defaultdict
+n = int(input())
+
+INF=float('inf')
 
 rr = lambda: input()
 rri = lambda: int(input())
 rrm = lambda: list(map(int, input().split()))
 
-INF=float('inf')
-
 def solve():
 	pass
 
-n = int(input())
 for _ in range(n):
 	print(solve())

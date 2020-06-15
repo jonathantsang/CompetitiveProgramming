@@ -204,15 +204,12 @@ function mainfunc(){
   const N = input[0]; // M is [1]
   const M = readline().split(" ").map(function (x) { return parseInt(x); });
 
-  const roads = [];
-  for(var i = 0; i < M; i++){
+  let roads = [];
+  for(var i = 0; i < N-1; i++){
     var input = readline().split(" ").map(function (x) { return parseInt(x); });
     const a = input[0];
     const b = input[1];
     roads.push([a,b]);
   }
-  console.log(N);
-  console.log(M);
-  console.log(roads);
   console.log(main(N,M,roads));
 }

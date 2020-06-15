@@ -202,3 +202,4 @@ function mainfunc(){
   }
   console.log(main(N,M,roads));
 }
+mainfunc();

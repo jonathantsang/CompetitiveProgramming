@@ -15,7 +15,7 @@ process.stdin.on('end', _ => {
         return string.trim();
     });
 
-    main();
+    mainfunc();
 });
 
 function readline() {
@@ -199,17 +199,19 @@ function main(N, M, roads) {
     return answer;
 }
 
-var input = readline().split(" ").map(function (x) { return parseInt(x); });
-const N = input[0];
-const M = input[1];
-
-const roads = [];
-for(var i = 0; i < M; i++){
+function mainfunc(){
   var input = readline().split(" ").map(function (x) { return parseInt(x); });
-  const a = input[0];
-  const b = input[1];
-  roads.push(a);
-  roads.push(b);
-}
+  const N = input[0];
+  const M = input[1];
 
-console.log(main(N,M,roads));
+  const roads = [];
+  for(var i = 0; i < M; i++){
+    var input = readline().split(" ").map(function (x) { return parseInt(x); });
+    const a = input[0];
+    const b = input[1];
+    roads.push(a);
+    roads.push(b);
+  }
+
+  console.log(main(N,M,roads));
+}

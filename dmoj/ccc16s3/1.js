@@ -209,9 +209,10 @@ function mainfunc(){
     var input = readline().split(" ").map(function (x) { return parseInt(x); });
     const a = input[0];
     const b = input[1];
-    roads.push(a);
-    roads.push(b);
+    roads.push([a,b]);
   }
-
+  console.log(N);
+  console.log(M);
+  console.log(roads);
   console.log(main(N,M,roads));
 }

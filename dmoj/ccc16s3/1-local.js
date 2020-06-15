@@ -1,15 +1,26 @@
-/*
- * This is a custom version of V8 that adds six functions in order to perform I/O and aid in online judging.
- *
- * * `print(...)`: similar to Python's `print`, prints all argument separated by space followed by new line.
- * * `flush()`: flushes stdout, ensuring everything output by `print()` immediately shows up.
- * * `gets()`: similar to the Ruby equivalent, returns one line of input from `stdin`.
- * * `read(bytes)`: read `bytes` bytes from stdin as an `ArrayBuffer`.
- * * `write(buffer)`: write a typed array, `ArrayBuffer`, or a view of `ArrayBuffer` to stdout.
- * * `quit(code)`: exits the program with `code`.
- * * You can also assign to the global variable `autoflush` to control whether `print()` flushes.
- *
- */
+'use strict';
+
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
+
+let inputString = '';
+let currentLine = 0;
+
+process.stdin.on('data', inputStdin => {
+    inputString += inputStdin;
+});
+
+process.stdin.on('end', _ => {
+    inputString = inputString.trim().split('\n').map(string => {
+        return string.trim();
+    });
+
+    mainfunc();
+});
+
+function readline() {
+    return inputString[currentLine++];
+}
 
 // First, we want to get rid of all the branches that do not contain any pho restaurants.
 // After this process, all of the leaves of the tress should be pho restaurants.
@@ -189,16 +200,19 @@ function main(N, M, roads) {
 }
 
 function mainfunc(){
-  var input = gets().split(" ").map(function (x) { return parseInt(x); });
+  var input = readline().split(" ").map(function (x) { return parseInt(x); });
   const N = input[0]; // M is [1]
-  const M = gets().split(" ").map(function (x) { return parseInt(x); });
+  const M = readline().split(" ").map(function (x) { return parseInt(x); });
 
-  let roads = [];
-  for(var i = 0; i < N-1; i++){
-    var input = gets().split(" ").map(function (x) { return parseInt(x); });
+  const roads = [];
+  for(var i = 0; i < M; i++){
+    var input = readline().split(" ").map(function (x) { return parseInt(x); });
     const a = input[0];
     const b = input[1];
     roads.push([a,b]);
   }
+  console.log(N);
+  console.log(M);
+  console.log(roads);
   console.log(main(N,M,roads));
 }

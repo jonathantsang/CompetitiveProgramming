@@ -201,8 +201,8 @@ function main(N, M, roads) {
 
 function mainfunc(){
   var input = readline().split(" ").map(function (x) { return parseInt(x); });
-  const N = input[0];
-  const M = input[1];
+  const N = input[0]; // M is [1]
+  const M = readline().split(" ").map(function (x) { return parseInt(x); });
 
   const roads = [];
   for(var i = 0; i < M; i++){

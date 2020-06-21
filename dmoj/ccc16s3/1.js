@@ -200,6 +200,6 @@ function mainfunc(){
     const b = input[1];
     roads.push([a,b]);
   }
-  console.log(main(N,M,roads));
+  print(main(N,M,roads));
 }
 mainfunc();

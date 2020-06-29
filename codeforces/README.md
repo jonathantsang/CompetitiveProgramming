@@ -13,6 +13,13 @@ Backlog of problems I need to solve on my own time:
 - https://codeforces.com/contest/1355/problem/C
 - https://codeforces.com/contest/1355/problem/D
 - https://codeforces.com/contest/1355/problem/E
+- https://codeforces.com/contest/1364/problem/D
+- https://codeforces.com/contest/1373/problem/A
+- https://codeforces.com/contest/1373/problem/B
+- https://codeforces.com/contest/1373/problem/C
+- https://codeforces.com/contest/1373/problem/D
+- https://leetcode.com/contest/weekly-contest-195
+- https://leetcode.com/contest/biweekly-contest-29
 
 ladders:
 - https://github.com/karansinghgit/CodeForces-Ladders

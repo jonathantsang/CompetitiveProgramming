@@ -12,3 +12,7 @@ Stuff that is currently updated:
 - Leetcode Weekly Contest Solutions
 - BinarySearch.io Weekly Contest Solutions
 - Codeforces Contest Solutions
+
+Other CP resources:
+
+https://cp-algorithms.com/

@@ -5,8 +5,6 @@ rri = lambda: int(input())
 rrm = lambda: list(map(int, input().split()))
 
 INF=float('inf')
-YES, NO="YES", "NO"
-
 
 def solve():
 	pass

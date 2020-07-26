@@ -5,10 +5,12 @@ rri = lambda: int(input())
 rrm = lambda: list(map(int, input().split()))
 
 INF=float('inf')
+YES, NO="YES", "NO"
+
 
 def solve():
 	pass
 
-t = rri()
-for _ in range(t):
+n = rri()
+for _ in range(n):
 	print(solve())

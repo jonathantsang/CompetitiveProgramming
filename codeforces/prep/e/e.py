@@ -9,6 +9,6 @@ INF=float('inf')
 def solve():
 	pass
 
-n = rri()
-for _ in range(n):
+t = rri()
+for _ in range(t):
 	print(solve())

@@ -16,3 +16,14 @@ class Trie:
             root.children = dic_to_search
             root = root.children[symbol]
         root.end_node = 1
+
+    def search(self, word):
+        node = self.root
+        idx = 0
+        while node:
+            if idx == len(word) and node.end_node:
+                return True
+            if word[idx] not in node.children:
+                return False
+            node = node.children[word[idx]]
+        return False

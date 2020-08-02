@@ -3,7 +3,7 @@ class SegmentTree():# limit for array size
         N = 100000
 
         # Max size of tree
-        tree = [0] * (2 * N)
+        self.tree = [float('inf')] * (2 * N)
 
     # function to build the tree
     def build(self, arr):
@@ -11,17 +11,17 @@ class SegmentTree():# limit for array size
 
         # insert leaf nodes in tree
         for i in range(self.n) :
-            tree[n + i] = arr[i];
+            self.tree[self.n + i] = arr[i];
 
         # build the tree by calculating parents
         for i in range(self.n - 1, 0, -1) :
-            tree[i] = tree[i << 1] + tree[i << 1 | 1];
+            self.tree[i] = min(self.tree[i << 1],self.tree[i << 1 | 1]);
 
     # function to update a tree node
     def updateTreeNode(self, p, value):
 
         # set value at position p
-        tree[p + self.n] = value;
+        self.tree[p + self.n] = value;
         p = p + self.n;
 
         # move upward and update parents
@@ -29,13 +29,13 @@ class SegmentTree():# limit for array size
 
         while i > 1 :
 
-            tree[i >> 1] = tree[i] + tree[i ^ 1];
+            self.tree[i >> 1] = min(self.tree[i],self.tree[i ^ 1]);
             i >>= 1;
 
     # function to get sum on interval [l, r)
     def query(self, l, r) :
 
-        res = 0;
+        res = float('inf');
 
         # loop to find the sum in the range
         l += self.n;
@@ -44,12 +44,12 @@ class SegmentTree():# limit for array size
         while l < r :
 
             if (l & 1) :
-                res += tree[l];
+                res = min(res,self.tree[l]);
                 l += 1
 
             if (r & 1) :
                 r -= 1;
-                res += tree[r];
+                res = min(res, self.tree[r]);
 
             l >>= 1;
             r >>= 1

@@ -1,31 +1,23 @@
-# python2 version
-
-import atexit
-import io
-import sys
-
-_INPUT_LINES = sys.stdin.read().splitlines()
-raw_input = iter(_INPUT_LINES).next
-_OUTPUT_BUFFER = io.BytesIO()
-sys.stdout = _OUTPUT_BUFFER
-
-
-@atexit.register
-def write():
-    sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
+import io, os, math
+input = io.BytesIO(os.read(0,os.fstat(0).st_size)).readline
 
 rr = lambda: input()
-rri = lambda: int(raw_input())
-rrm = lambda: list(map(int, raw_input().split()))
+rri = lambda: int(input())
+rrm = lambda: list(map(int, input().split()))
+INF=float('inf')
 
 class SegmentTree():
-    def __init__(self, n):
+    def __init__(self, a, n):
+
+        # CHANGE
+        self.defaultVal = float('inf')
+
         self.size = 1
 
         while self.size < n:
             self.size *= 2
 
-        self.arr = [float('inf')] * (2 * self.size)
+        self.arr = [self.defaultVal] * (2 * self.size)
 
     def build2(self, A, x, lx, rx):
         if ((rx - lx) == 1):
@@ -38,7 +30,7 @@ class SegmentTree():
         self.build2(A, 2 * x + 1, lx, m)
         self.build2(A, 2 * x + 2, m, rx)
 
-        self.arr[x] = min(self.arr[2 * x + 1], self.arr[2 * x + 2])
+        self.arr[x] = self.comparator(self.arr[2 * x + 1],self.arr[2 * x + 2])
 
     def build(self, A):
         self.build2(A, 0, 0, self.size)
@@ -58,29 +50,34 @@ class SegmentTree():
             # right child
             self.setV2(i, v, 2 * x + 2, m, rx)
 
-        self.arr[x] = min(self.arr[2 * x + 1], self.arr[2 * x + 2])
+        self.arr[x] = self.comparator(self.arr[2 * x + 1],self.arr[2 * x + 2])
 
-    def setV(self, i, v):
+    def update(self, i, v):
         self.setV2(i, v, 0, 0, self.size)
 
-    def minV2(self, l, r, x, lx, rx):
+    def queryV(self, l, r, x, lx, rx):
         if (lx >= r or l >= rx):
-            return float('inf') # does not intersect
+            return self.defaultVal # does not intersect
 
         if (lx >= l and rx <= r):
-            return self.arr[x] # at the leaf node to take
+            return self.arr[x]
 
-        # otherwise partition further
         m = lx + rx >> 1
 
-        s1 = self.minV2(l, r, 2 * x + 1, lx, m)
-        s2 = self.minV2(l, r, 2 * x + 2, m, rx)
+        s1 = self.queryV(l, r, 2 * x + 1, lx, m)
+        s2 = self.queryV(l, r, 2 * x + 2, m, rx)
 
-        return min(s1,s2)
+        return self.comparator(s1,s2)
 
     # sums from l to r
-    def minV(self, l, r):
-        return self.minV2(l, r, 0, 0, self.size)
+    def query(self, l, r):
+        return self.queryV(l, r, 0, 0, self.size)
+
+    def comparator(self, v1, v2):
+        # CUSTOM COMPARE
+        # ex. for sum of range
+        # return v1 + v2
+        return min(v1,v2)
 
     def __repr__(self):
         return " ".join(list(map(str, self.arr)))
@@ -88,15 +85,18 @@ class SegmentTree():
     def __str__(self):
         return " ".join(list(map(str, self.arr)))
 
+
 n,m = rrm()
 arr = rrm()
 
-s = SegmentTree(n)
+s = SegmentTree(arr, n)
 s.build(arr)
 
+ans = []
 for _ in range(m):
     op, a, b = rrm()
     if op == 1:
-        s.setV(a, b)
+        s.update(a, b)
     else:
-        print(s.minV(a, b))
+        ans.append(str(s.query(a, b)))
+print("\n".join(ans))

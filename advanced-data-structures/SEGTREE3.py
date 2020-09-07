@@ -1,6 +1,6 @@
 class SegmentTree:
     def __init__(self, a, n):
-
+        import math
         # CHANGE
         self.defaultVal = 0
 
